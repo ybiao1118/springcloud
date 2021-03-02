@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: kafka
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        namespace: defbd666-372a-4004-bf26-a2c65882c2e2
+        file-extension: yml
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: defbd666-372a-4004-bf26-a2c65882c2e2x1

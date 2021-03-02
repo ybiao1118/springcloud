@@ -1,0 +1,41 @@
+server:
+  port: 8180
+  ip: ${spring.cloud.client.ip-address}
+spring:
+  application:
+    name: kafka
+
+mybatis:
+  mapper-locations: classpath:config/mapper/*.xml
+logging:
+  config: classpath:config/log/logback.xml
+  level:
+    com.alibaba.nacos.client.config.impl.ClientWorker: WARN
+#kafka相关参数配置
+kafka:
+  consumer:
+    servers: 172.26.2.169:9092
+    enable:
+      auto:
+        commit: true #(是否自动提交)
+    session:
+      timeout: 20000 #连接超时时间
+    auto:
+      commit:
+        interval: 100
+      offset:
+        reset: latest # (实时生产，实时消费，不会从头开始消费)
+    topic: test #消费者的topic
+    group:
+      id: test   #(消费组)
+    concurrency: 10 #(设置消费线程数)
+  producer:
+    servers: 172.26.2.169:9092
+    topic: test #(生产的topic)
+    retries: 0
+    batch:
+      size: 4096
+    linger: 1
+    buffer:
+      memory: 40960
+

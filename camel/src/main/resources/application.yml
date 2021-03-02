@@ -1,0 +1,23 @@
+server:
+  port: 8190
+  ip: ${spring.cloud.client.ip-address}
+spring:
+  application:
+    name: camel
+
+mybatis:
+  mapper-locations: classpath:config/mapper/*.xml
+logging:
+  config: classpath:config/log/logback.xml
+  level:
+    com.alibaba.nacos.client.config.impl.ClientWorker: WARN
+camel:
+  springboot:
+    main-run-controller: true
+
+ftp:
+  address: 127.0.0.1
+  username: ftpuser
+  password: ftpuser
+  url: /data
+  options: delay=10s&binary=true&move=history&passiveMode=true
